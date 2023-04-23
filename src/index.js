@@ -13,6 +13,7 @@ let page = 1;
 let query = '';
 let uploaded = 0;
 var lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
   captionDelay: '150',
 });
 
@@ -42,6 +43,9 @@ async function onSearchClick(e) {
 async function appendCards(e) {
   page += 1;
   const response = await fetchingQuery(query, page);
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
   if (uploaded >= response.totalHits || response.hits.length === 0) {
     Notiflix.Notify.info(
       "We're sorry, but you've reached the end of search results."
@@ -51,4 +55,8 @@ async function appendCards(e) {
   uploaded += response.hits.length;
   renderingCards(createMarkup(response.hits));
   lightbox.refresh();
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
