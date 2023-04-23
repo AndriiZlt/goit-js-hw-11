@@ -33,22 +33,29 @@ async function onSearchClick(e) {
     );
     return;
   }
-  uploaded = response.hits.length;
   renderingCards(createMarkup(response.hits));
   lightbox.refresh();
+  Notiflix.Notify.info(`Hooray! We found ${response.totalHits} images.`);
   moreBtnRef.classList.remove('visuallyhidden');
 }
 
 async function appendCards(e) {
   page += 1;
   const response = await fetchingQuery(query, page);
-  if (uploaded >= response.totalHits || response.hits.length === 0) {
+  if (response.hits.length === 0) {
     Notiflix.Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
     return;
   }
-  uploaded += response.hits.length;
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
   renderingCards(createMarkup(response.hits));
+  window.scrollBy({
+    top: cardHeight * 1.5,
+    behavior: 'smooth',
+  });
   lightbox.refresh();
 }
