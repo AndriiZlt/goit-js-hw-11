@@ -6,6 +6,12 @@ body {
   font-family: 'Roboto', serif;
   min-width: 428px;
 }
+b,
+p,
+span {
+  display: block;
+  width: 100%;
+}
 
 .visuallyhidden {
   position: absolute;
@@ -77,10 +83,6 @@ body {
   flex-basis: 290px;
 }
 
-/* .gallery a:not(:last-child) {
-  margin-right: 20px;
-} */
-
 .result {
   max-width: 290px;
   font-weight: 200;
@@ -113,7 +115,6 @@ body {
 
 .info-item {
   text-align: center;
-  display: block;
 }
 
 .info span {
