@@ -113,8 +113,7 @@ body {
 
 .info-item {
   text-align: center;
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .info span {
