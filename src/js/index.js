@@ -1,4 +1,3 @@
-import apiHandler, { fetchingQuery, RESULTSPERPAGE } from './apiService';
 import { creatingMarkup } from './creatingMarkup';
 import { renderingCards } from './rendering';
 import { getRefs } from './refs';
