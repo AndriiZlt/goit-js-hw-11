@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-export function createMarkup(data) {
+export function creatingMarkup(data) {
   return data
     .map(card => {
       return `<a class="gallery-link" href="${card.largeImageURL}">

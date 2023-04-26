@@ -13,7 +13,7 @@ span {
   width: 100%;
 }
 
-.visuallyhidden {
+.is-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
