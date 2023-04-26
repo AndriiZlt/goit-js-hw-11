@@ -1,4 +1,3 @@
-import Notiflix from 'notiflix';
 export function creatingMarkup(data) {
   return data
     .map(card => {

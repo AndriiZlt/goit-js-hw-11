@@ -3,12 +3,13 @@ import { renderingCards } from './rendering';
 import { getRefs } from './refs';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import LoadMoreBtn from './loadMoreBtn';
+import LoadMoreBtn from './LoadMoreBtn';
 import { scrolling } from './scrolling';
-import ApiService from './apiService';
+import ApiService from './ApiService';
 
 const { formRef, galleryRef } = getRefs();
 const loadMoreBtn = new LoadMoreBtn('.load-more');
+console.log(loadMoreBtn);
 let apiService = new ApiService('');
 var lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: '150',
@@ -20,7 +21,8 @@ loadMoreBtn.ref.addEventListener('click', onMoreClick);
 async function onSearchClick(e) {
   e.preventDefault();
   clearGallery(galleryRef);
-  apiService = new ApiService(e.currentTarget.elements.searchQuery.value);
+  apiService.searchQuery = e.currentTarget.elements.searchQuery.value;
+  apiService.page = 1;
   if (!apiService.isEmptyQuery()) {
     const response = await apiService.fetchingQuery();
     if (response) {
