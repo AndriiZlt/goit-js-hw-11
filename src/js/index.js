@@ -9,7 +9,6 @@ import ApiService from './ApiService';
 
 const { formRef, galleryRef } = getRefs();
 const loadMoreBtn = new LoadMoreBtn('.load-more');
-console.log(loadMoreBtn);
 let apiService = new ApiService('');
 var lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: '150',
